@@ -28,7 +28,7 @@ the Site.</p>
     depicts humans having sex (either explicit or implied) with other non-human
     animals.</li>
 
-    <li>Any depiction of extreme mutilation, extreme bodily distension,
+    <li>Any photograph or photorealistic drawing or movie of mutilation, carcasses, extreme bodily distension,
     feces.</li>
 
     <li>Personal images: any image that is suspected to be uploaded for

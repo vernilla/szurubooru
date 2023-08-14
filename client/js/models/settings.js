@@ -5,20 +5,20 @@ const events = require("../events.js");
 const defaultSettings = {
     listPosts: {
         safe: true,
-        sketchy: true,
+        sketchy: false,
         unsafe: false,
     },
     upscaleSmallPosts: false,
-    endlessScroll: false,
+    endlessScroll: true,
     keyboardShortcuts: true,
-    transparencyGrid: true,
+    transparencyGrid: false,
     fitMode: "fit-both",
     tagSuggestions: true,
     autoplayVideos: false,
     postsPerPage: 42,
     tagUnderscoresAsSpaces: false,
-    darkTheme: false,
-    postFlow: false,
+    darkTheme: true,
+    postFlow: true,
 };
 
 class Settings extends events.EventTarget {

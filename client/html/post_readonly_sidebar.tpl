@@ -39,10 +39,10 @@
         <% } %>
 
         <section class='zoom'>
-            <a href class='fit-original'>Original zoom</a> &middot;
+            <a href class='fit-original'>full size</a> &middot;
             <a href class='fit-width'>fit width</a> &middot;
-            <a href class='fit-height'>height</a> &middot;
-            <a href class='fit-both'>both</a>
+            <a href class='fit-height'>fit height</a> &middot;
+            <a href class='fit-both'>fit both</a>
         </section>
 
         <% if (ctx.post.source) { %>
@@ -55,10 +55,7 @@
         <% } %>
 
         <section class='search'>
-            Search on
-            <a href='http://iqdb.org/?url=<%- encodeURIComponent(ctx.post.fullContentUrl) %>'>IQDB</a> &middot;
-            <a href='https://danbooru.donmai.us/posts?tags=md5:<%- ctx.post.checksumMD5 %>'>Danbooru</a> &middot;
-            <a href='https://www.google.com/searchbyimage?&image_url=<%- encodeURIComponent(ctx.post.fullContentUrl) %>'>Google Images</a>
+        ~
         </section>
 
         <section class='social'>
