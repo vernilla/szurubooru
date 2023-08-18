@@ -23,7 +23,7 @@
             <% if (ctx.post.flags.length) { %><!--
                 --><% if (ctx.post.flags.includes('loop')) { %><i class='fa fa-repeat'></i><% } %><!--
                 --><% if (ctx.post.flags.includes('sound')) { %><i class='fa fa-volume-up'></i><% } %>
-            <% } %>
+            <% } %> <br><sup>click to copy or save!</sup>
         </section>
 
         <section class='upload-info'>
@@ -81,7 +81,7 @@
     <% } %>
 
     <nav class='tags'>
-        <h1>Tags (<%- ctx.post.tags.length %>)</h1>
+        <h3>Tags (<%- ctx.post.tags.length %>)</h3>
         <% if (ctx.post.tags.length) { %>
             <ul class='compact-tags'><!--
                 --><% for (let tag of ctx.post.tags) { %><!--
