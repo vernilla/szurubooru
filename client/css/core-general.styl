@@ -36,6 +36,9 @@ body
 body.darktheme
     color: $text-color-darktheme
     background: $window-color-darktheme
+    background-image: url(/data/assets/spacebg.gif)
+    background-blend-mode: color-dodge
+    background-size: 15%;
 
 h1, h2, h3
     font-weight: normal
@@ -167,6 +170,8 @@ nav
 
     &#top-navigation
         background: $top-navigation-color
+        border-bottom: #3f284e;
+        border-bottom-style: double;
         margin: 0
         ul
             display: block
@@ -321,7 +326,10 @@ a .access-key
     &::-webkit-scrollbar-thumb
         background-color: $scrollbar-thumb-color
 
+::placeholder
+    color:rgb(184, 213, 240)
+
 /* hack to prevent text from being copied */
-[data-pseudo-content]:before {
+/*[data-pseudo-content]:before {
     content: attr(data-pseudo-content)
-}
+}*/
