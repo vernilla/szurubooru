@@ -228,10 +228,10 @@ input[type=number]
     //    border: 2px solid darken($input-enabled-border-color, 75%)
     //    background: darken($input-enabled-background-color, 75%)
         color: $input-enabled-text-color-darktheme
-    //    &:disabled
-    //        background: darken($input-disabled-background-color, 75%)
-    //    &[readonly]
-    //        background: darken($input-disabled-background-color, 75%)
+        &:disabled
+            background: darken($input-disabled-background-color, 75%)
+        &[readonly]
+            background: darken($input-disabled-background-color, 75%)
 
 input[readonly],
 input[readonly]+.radio,
