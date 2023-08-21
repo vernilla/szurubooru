@@ -1,11 +1,8 @@
 #!/usr/bin/dumb-init /bin/sh
+set -e
+cd /opt/app
 
-# Integrate environment variables
-sed -i "s|__BACKEND__|${BACKEND_HOST}|" \
-    /etc/nginx/nginx.conf
-sed -i "s|__BASEURL__|${BASE_URL:-/}|g" \
-    /var/www/index.htm \
-    /var/www/manifest.json
+alembic upgrade head
 
-# Start server
-exec nginx
+echo "Starting szurubooru API on port ${PORT} - Running on ${THREADS} threads"
+exec waitress-serve-3 --port ${PORT} --threads ${THREADS} szurubooru.facade:app
