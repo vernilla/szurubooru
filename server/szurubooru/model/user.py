@@ -34,8 +34,6 @@ class User(Base):
     avatar_style = sa.Column(
         "avatar_style", sa.Unicode(32), nullable=False, default=AVATAR_GRAVATAR
     )
-    # TODO switch to a tag list or any search-related object?
-    blocklist = sa.Column("blocklist", sa.Text, nullable=True)
 
     comments = sa.orm.relationship("Comment")
 
