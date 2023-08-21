@@ -145,6 +145,7 @@ def test_serialize_user(user_factory):
         user.last_edit_time = datetime(1998, 1, 1)
         user.avatar_style = model.User.AVATAR_MANUAL
         user.rank = model.User.RANK_ADMINISTRATOR
+        user.blocklist = "tag1 tag2"
         db.session.add(user)
         db.session.flush()
         assert users.serialize_user(user, auth_user) == {
@@ -152,6 +153,7 @@ def test_serialize_user(user_factory):
             "name": "dummy user",
             "email": "test@example.com",
             "rank": "administrator",
+            "blocklist": "tag1 tag2",
             "creationTime": datetime(1997, 1, 1, 0, 0),
             "lastLoginTime": None,
             "avatarStyle": "manual",
@@ -230,12 +232,12 @@ def test_get_user_by_name_or_email(user_factory):
     assert users.get_user_by_name_or_email("NAME") is user
 
 
-def test_create_user_for_first_user(fake_datetime):
+def test_create_user_for_first_user(fake_datetime, config_injector):
     with patch("szurubooru.func.users.update_user_name"), patch(
         "szurubooru.func.users.update_user_password"
     ), patch("szurubooru.func.users.update_user_email"), fake_datetime(
         "1997-01-01"
-    ):
+    ), patch("szurubooru.func.users.update_user_blocklist"):
         user = users.create_user("name", "password", "email")
         assert user.creation_time == datetime(1997, 1, 1)
         assert user.last_login_time is None
@@ -251,10 +253,18 @@ def test_create_user_for_subsequent_users(user_factory, config_injector):
     db.session.flush()
     with patch("szurubooru.func.users.update_user_name"), patch(
         "szurubooru.func.users.update_user_email"
-    ), patch("szurubooru.func.users.update_user_password"):
+    ), patch("szurubooru.func.users.update_user_password"
+    ), patch("szurubooru.func.users.update_user_blocklist"):
         user = users.create_user("name", "password", "email")
         assert user.rank == model.User.RANK_REGULAR
 
+def test_create_user_with_blocklist(user_factory, config_injector):
+    config_injector({"default_tag_blocklist": "tagblocklisted"})
+    with patch("szurubooru.func.users.update_user_name"), patch(
+        "szurubooru.func.users.update_user_email"
+    ), patch("szurubooru.func.users.update_user_password"):
+        user = users.create_user("name", "password", "email")
+        assert user.blocklist == "tagblocklisted"
 
 def test_update_user_name_with_empty_string(user_factory):
     user = user_factory()
