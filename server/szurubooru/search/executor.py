@@ -40,9 +40,7 @@ class Executor:
         self, query_text: str, entity_id: int
     ) -> Tuple[model.Base, model.Base]:
         search_query = self.parser.parse(query_text)
-
         self.config.on_search_query_parsed(search_query)
-
         filter_query = self.config.create_around_query().options(
             sa.orm.lazyload("*")
         )
@@ -72,9 +70,8 @@ class Executor:
         entity_id: int,
         serializer: Callable[[model.Base], rest.Response],
     ) -> rest.Response:
-        query = ctx.get_param_as_string("query", default="")
         entities = self.get_around(
-            query, entity_id
+            ctx.get_param_as_string("query", default=""), entity_id
         )
         return {
             "prev": serializer(entities[0]),

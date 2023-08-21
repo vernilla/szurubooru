@@ -68,16 +68,6 @@
                     </div>
                 </li>
             <% } %>
-
-            <% if (ctx.canEditBlocklist) { %>
-                <li>
-                    <%= ctx.makeTextInput({
-                        text: 'Blocklist',
-                        name: 'blocklist',
-                        value: ctx.user.blocklist,
-                    }) %>
-                </li>
-            <% } %>
         </ul>
 
         <div class='messages'></div>
