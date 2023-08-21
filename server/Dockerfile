@@ -77,6 +77,7 @@ RUN apk --no-cache add \
  && chown -R app:app /opt/app /data
 
 USER app
+RUN chmod a+x /opt/app/docker-start.sh
 CMD ["/opt/app/docker-start.sh"]
 
 ARG PORT=6666

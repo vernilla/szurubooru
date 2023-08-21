@@ -27,6 +27,7 @@ FROM nginx:alpine as release
 RUN apk --no-cache add dumb-init
 COPY --from=approot / /
 
+RUN chmod a+x docker-start.sh
 CMD ["/docker-start.sh"]
 VOLUME ["/data"]
 
