@@ -107,6 +107,7 @@ class UserSerializer(serialization.BaseSerializer):
             "lastLoginTime": self.serialize_last_login_time,
             "version": self.serialize_version,
             "rank": self.serialize_rank,
+            "blocklist": self.serialize_blocklist,
             "avatarStyle": self.serialize_avatar_style,
             "avatarUrl": self.serialize_avatar_url,
             "commentCount": self.serialize_comment_count,
@@ -146,6 +147,9 @@ class UserSerializer(serialization.BaseSerializer):
 
     def serialize_favorite_post_count(self) -> Any:
         return self.user.favorite_post_count
+
+    def serialize_blocklist(self) -> Any:
+        return self.user.blocklist
 
     def serialize_liked_post_count(self) -> Any:
         return get_liked_post_count(self.user, self.auth_user)
@@ -222,6 +226,7 @@ def create_user(name: str, password: str, email: str) -> model.User:
         user.rank = util.flip(auth.RANK_MAP)[config.config["default_rank"]]
     else:
         user.rank = model.User.RANK_ADMINISTRATOR
+    update_user_blocklist(user, None)
     user.creation_time = datetime.utcnow()
     user.avatar_style = model.User.AVATAR_GRAVATAR
     return user
@@ -292,6 +297,15 @@ def update_user_rank(
     ):
         raise errors.AuthError("Trying to set higher rank than your own.")
     user.rank = rank
+
+
+def update_user_blocklist(user: model.User, blocklist: str):
+    assert user
+    if blocklist is not None:
+        blocklist = blocklist.strip()
+    else:  # We're creating the user, use default config blocklist
+        blocklist = config.config['default_tag_blocklist']
+    user.blocklist = blocklist or None
 
 
 def update_user_avatar(
