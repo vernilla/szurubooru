@@ -1,7 +1,7 @@
 <div class='content-wrapper transparent' id='home'>
     <div class='messages'></div>
     <header>
-        <h1>💗<img src="data\assets\bling.gif"><sup>💗</sup></h1> 
+        <h1><img src="data\assets\bling.gif"></h1> 
     </header>
     <% if (ctx.canListPosts) { %>
         <form class='horizontal'>
