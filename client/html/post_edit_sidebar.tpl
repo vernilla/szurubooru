@@ -4,6 +4,12 @@
 
         <div class='messages'></div>
 
+                <% if (ctx.canEditPostTags) { %>
+            <section class='tags'>
+                <%= ctx.makeTextInput({}) %>
+            </section>
+        <% } %>
+
         <% if (ctx.enableSafety && ctx.canEditPostSafety) { %>
             <section class='safety'>
                 <label>Safety</label>
@@ -64,12 +70,6 @@
                     text: 'Source',
                     value: ctx.post.source,
                 }) %>
-            </section>
-        <% } %>
-
-        <% if (ctx.canEditPostTags) { %>
-            <section class='tags'>
-                <%= ctx.makeTextInput({}) %>
             </section>
         <% } %>
 
