@@ -1,22 +1,50 @@
-# Your Favicon Package
+# szurubooru
 
-This package was generated with [RealFaviconGenerator](https://realfavicongenerator.net/) [v0.16](https://realfavicongenerator.net/change_log#v0.16)
+Szurubooru is an image board engine inspired by services such as Danbooru,
+Gelbooru and Moebooru dedicated for small and medium communities. Its name [has
+its roots in Polish language and has onomatopeic meaning of scraping or
+scrubbing](https://sjp.pwn.pl/sjp/;2527372). It is pronounced as *shoorubooru*.
 
-## Install instructions
+## Features
 
-To install this package:
+- Post content: images (JPG, PNG, GIF, animated GIF), videos (MP4, WEBM), Flash animations
+- Ability to retrieve web video content using [yt-dlp](https://github.com/yt-dlp/yt-dlp)
+- Post comments
+- Post notes / annotations, including arbitrary polygons
+- Rich JSON REST API ([see documentation](doc/API.md))
+- Token based authentication for clients
+- Rich search system
+- Rich privilege system
+- Autocomplete in search and while editing tags
+- Tag categories
+- Tag suggestions
+- Tag implications (adding a tag automatically adds another)
+- Tag aliases
+- Pools and pool categories
+- Duplicate detection
+- Post rating and favoriting; comment rating
+- Polished UI
+- Browser configurable endless paging
+- Browser configurable backdrop grid for transparent images
 
-Extract this package in the root of your web site. If your site is <code>http://www.example.com</code>, you should be able to access a file named <code>http://www.example.com/favicon.ico</code>.
+## Installation
 
-Insert the following code in the `head` section of your pages:
+It is recommended that you use Docker for deployment.
+[See installation instructions.](doc/INSTALL.md)
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
-    <link rel="manifest" href="/site.webmanifest?v=2">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=2" color="#5b2fba">
-    <link rel="shortcut icon" href="/favicon.ico?v=2">
-    <meta name="msapplication-TileColor" content="#603cba">
-    <meta name="theme-color" content="#ffffff">
+More installation resources, as well as related projects can be found on the
+[GitHub project Wiki](https://github.com/rr-/szurubooru/wiki)
 
-*Optional* - Check your favicon with the [favicon checker](https://realfavicongenerator.net/favicon_checker)
+## Screenshots
+
+Post list:
+
+![20160908_180032_fsk](https://cloud.githubusercontent.com/assets/1045476/18356730/3f1123d6-75ee-11e6-85dd-88a7615243a0.png)
+
+Post view:
+
+![20160908_180429_lmp](https://cloud.githubusercontent.com/assets/1045476/18356731/3f1566ee-75ee-11e6-9594-e86ca7347b0f.png)
+
+## License
+
+[GPLv3](LICENSE.md).
