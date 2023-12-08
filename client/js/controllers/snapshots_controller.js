@@ -22,7 +22,7 @@ class SnapshotsController {
         this._pageController = new PageController();
         this._pageController.run({
             parameters: ctx.parameters,
-            defaultLimit: 25,
+            defaultLimit: 1000,
             getClientUrlForPage: (offset, limit) => {
                 const parameters = Object.assign({}, ctx.parameters, {
                     offset: offset,
